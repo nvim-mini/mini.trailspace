@@ -1,10 +1,7 @@
 --- *mini.trailspace* Trailspace (highlight and remove)
---- *MiniTrailspace*
 ---
 --- MIT License Copyright (c) 2021 Evgeni Chasnovski
----
---- ==============================================================================
----
+
 --- Features:
 --- - Highlighting is done only in modifiable buffer by default, only in Normal
 ---   mode, and stops in Insert mode and when leaving window.
@@ -28,9 +25,9 @@
 ---
 --- # Highlight groups ~
 ---
---- * `MiniTrailspace` - highlight group for trailing space.
+--- - `MiniTrailspace` - highlight group for trailing space.
 ---
---- To change any highlight group, modify it directly with |:highlight|.
+--- To change any highlight group, set it directly with |nvim_set_hl()|.
 ---
 --- # Disabling ~
 ---
@@ -40,7 +37,8 @@
 --- rules for disabling module's functionality is left to user. See
 --- |mini.nvim-disabling-recipes| for common recipes. Note: after disabling
 --- there might be highlighting left; it will be removed after next
---- highlighting update (see |events| and `MiniTrailspace` |augroup|).
+--- highlighting update (see |events| and `MiniTrailspace` |:augroup|).
+---@tag MiniTrailspace
 
 -- Module definition ==========================================================
 local MiniTrailspace = {}
@@ -75,9 +73,7 @@ MiniTrailspace.setup = function(config)
   vim.defer_fn(MiniTrailspace.highlight, 0)
 end
 
---- Module config
----
---- Default values:
+--- Defaults ~
 ---@eval return MiniDoc.afterlines_to_code(MiniDoc.current.eval_section)
 MiniTrailspace.config = {
   -- Highlight only in normal buffers (ones with empty 'buftype'). This is
